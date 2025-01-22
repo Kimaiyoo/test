@@ -28,7 +28,6 @@ In this week, you will integrate the frontend and backend components of the Expe
         Implement error handling mechanisms on both frontend and backend to handle unexpected errors gracefully.
         Validate user input on the frontend to ensure data integrity and prevent common security vulnerabilities.
 
-
 ### Submision
 
-        Submit the link to your GitHub repository for evaluation through the GitHub Classrooms assignment .
+        Submit the link to your GitHub repository for evaluation through the GitHub Classrooms assignment.
