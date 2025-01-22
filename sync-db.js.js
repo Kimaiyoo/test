@@ -6,12 +6,12 @@ const sequelize = new Sequelize('expense_management', 'root', 'jepkorir18#', {
   port: 3306
 });
 
-sequelize.sync({ force: false }) // Set `force: true` to drop and recreate tables on every restart
+sequelize.sync({ force: false }) 
     .then(() => {
         console.log('Database synchronized');
-        process.exit(0); // Exit the process after synchronization
+        process.exit(0); 
     })
     .catch(error => {
         console.error('Unable to sync the database:', error);
-        process.exit(1); // Exit with an error code if synchronization fails
+        process.exit(1); 
     });

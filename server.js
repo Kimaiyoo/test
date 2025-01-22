@@ -6,9 +6,9 @@ const rateLimit = require('express-rate-limit');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-const User = require('./models/User'); // Import your User model
+const User = require('./models/User'); 
 const Expense = require('./models/Expense');
-const sequelize = require('./config'); // Import the Sequelize instance from config.js
+const sequelize = require('./config'); 
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,12 +22,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rate limiting middleware
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // Limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000, 
+    max: 100, 
 });
 app.use(limiter);
 
-// Helper function to generate JWT tokens
 const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id, username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
 };
@@ -70,7 +69,6 @@ app.get('/view_expense', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'view_expense.html'));
 });
 
-// Sync Database
 sequelize.sync()
     .then(() => {
         console.log('Database & tables created!');
@@ -149,7 +147,7 @@ app.post('/api/expenses', authenticateToken, async (req, res) => {
         }
 
         const newExpense = await Expense.create({
-            user_id: req.user.id, // Ensure the field name matches your model
+            user_id: req.user.id, 
             date,
             description,
             amount
@@ -166,7 +164,7 @@ app.post('/api/expenses', authenticateToken, async (req, res) => {
 app.get('/api/expenses', authenticateToken, async (req, res) => {
     try {
         const expenses = await Expense.findAll({
-            where: { user_id: req.user.id } // Ensure this matches your model
+            where: { user_id: req.user.id } 
         });
 
         res.status(200).json(expenses);
