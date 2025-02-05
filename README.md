@@ -8,7 +8,7 @@ In this week, you will integrate the frontend and backend components of the Expe
 
 ### User Authentication and Authorization:
 
-        Implement user authentication on the backend.
+        Implement user authentication on the backend .
         Create API endpoints for user login and registration.
         Use sessions or cookies to manage user sessions securely.
 
